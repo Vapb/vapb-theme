@@ -1,0 +1,22 @@
+baseURL = 'http://example.org/'
+languageCode = 'en-us'
+title = 'vapb-theme'
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about"
+    weight = 20
+
+    [[menu.main]]
+    identifier = "projects"
+    name = "Projects"
+    url = "/projects"
+    weight = 30
