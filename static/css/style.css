@@ -78,3 +78,21 @@ body {
 .post-snippet h3 {
   margin-bottom: 0.25rem;
 }
+
+
+.example-img {
+  width: 50%;
+  height: 500px;
+  border-radius: 100%;
+  background-image: url(/images/Happy.webp);
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
