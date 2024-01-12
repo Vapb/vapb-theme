@@ -1,7 +1,7 @@
 /* LAYOUT */
 
 body {
-  background-color: hsl(0, 0%, 20%);;
+  background-color: rgb(29, 29, 31);
   color: white;
   font-size: 125%;
   line-height: 1.5;
@@ -18,6 +18,10 @@ body {
   margin-bottom: 3rem;
 }
 
+.site-header{
+border-bottom: 1px dashed orange;
+}
+
 /* NAVIGATION */
 
 .site-nav {
@@ -25,11 +29,8 @@ body {
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  background-color: hsl(0, 0%, 10%);
-  background-size: cover;
-  border-radius: 7.5px;
-  padding-left: 4rem;
-  padding-right: 4rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .site-nav a {
@@ -79,17 +80,21 @@ body {
   margin-bottom: 0.25rem;
 }
 
+/* IMAGES */
 
-.example-img {
+.not-found-img {
   width: 50%;
-  height: 500px;
-  border-radius: 100%;
-  background-image: url(/images/Happy.webp);
-  background-position: center;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  height: auto;
 }
 
+.circular--square {
+  border-top-left-radius: 50% 50%;
+  border-top-right-radius: 50% 50%;
+  border-bottom-right-radius: 50% 50%;
+  border-bottom-left-radius: 50% 50%;
+}
+
+/* OTHERS */
 
 .center {
   display: block;
