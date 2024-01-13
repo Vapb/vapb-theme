@@ -2,6 +2,10 @@
 
 <h1>{{ .Title }}</h1>
 
+<p>{{ .Description }}</p>
+
+{{ partial "toc.html" .}}
+
 {{ .Content }}
 
 {{ partial "footer.html" . }}

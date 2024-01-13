@@ -1,3 +1,10 @@
+:root {
+  --red_orange: #ff4d00;
+  --bright_orange: #f07900;
+  --dark_orange: #602320;
+  --dark_yellow: #eb8c00;
+}
+
 /* LAYOUT */
 
 body {
@@ -19,7 +26,7 @@ body {
 }
 
 .site-header{
-border-bottom: 1px dashed orange;
+border-bottom: 1px dashed var(--bright_orange);
 }
 
 /* NAVIGATION */
@@ -37,11 +44,11 @@ border-bottom: 1px dashed orange;
   display: block;
   letter-spacing: 3px;
   text-decoration: none;
-  color: orange;
+  color: var(--bright_orange);
 }
 
 .site-nav a:hover{
-  color: orangered;
+  color: var(--red_orange);
 }
 
 .site-nav .logo {
@@ -93,6 +100,45 @@ border-bottom: 1px dashed orange;
   border-bottom-right-radius: 50% 50%;
   border-bottom-left-radius: 50% 50%;
 }
+
+/* Table of contents */
+
+.toc {
+  /*position: sticky;
+  top: 10px;*/
+  margin: 1.1rem 0 1rem 0;
+  padding: .5rem 1rem .5rem 1rem;
+  border-radius: .3rem;
+}
+
+.toc a {
+  color: var(--bright_orange);
+}
+
+.toc a:visited {
+  color: var(--dark_orange);
+}
+
+.toc a:hover {
+  color: var(--red_orange);
+}
+
+.toc a:active {
+  color: black;
+  background-color: var(--dark_yellow);
+}
+
+.toc ul {
+      padding-top: 1rem;
+      margin-left: 1rem;
+      padding-left: 1rem;
+}
+
+.toc ul li {
+      margin-bottom: 0.5em;
+      line-height: 1.4;
+}
+
 
 /* OTHERS */
 
