@@ -15,8 +15,14 @@ title = 'vapb-theme'
     url = "/about"
     weight = 100
 
-    [[menu.main]]
+  [[menu.main]]
     identifier = "projects"
     name = "Projects"
     url = "/projects"
     weight = 30
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 4
+    ordered = false
+    startLevel = 2

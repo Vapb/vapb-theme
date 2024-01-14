@@ -15,19 +15,37 @@ body {
   padding: 1rem;
   margin: 0 auto;
   max-width: 85rem;
-  width: 95%;
+  width: 90%;
 }
 
 .content {
   margin: 0 auto;
-  padding: 5rem;
-  max-width: 65rem;
+  width: 95%;
+  max-width: 75rem;
   margin-bottom: 3rem;
 }
 
 .site-header{
 border-bottom: 1px dashed var(--bright_orange);
 }
+
+a {
+  color: var(--bright_orange);
+}
+
+a:visited {
+  color: var(--dark_orange);
+}
+
+a:hover {
+  color: var(--red_orange);
+}
+
+a:active {
+  color: black;
+  background-color: var(--dark_yellow);
+}
+
 
 /* NAVIGATION */
 
@@ -104,32 +122,13 @@ border-bottom: 1px dashed var(--bright_orange);
 /* Table of contents */
 
 .toc {
-  /*position: sticky;
-  top: 10px;*/
   margin: 1.1rem 0 1rem 0;
   padding: .5rem 1rem .5rem 1rem;
   border-radius: .3rem;
-}
-
-.toc a {
-  color: var(--bright_orange);
-}
-
-.toc a:visited {
-  color: var(--dark_orange);
-}
-
-.toc a:hover {
-  color: var(--red_orange);
-}
-
-.toc a:active {
-  color: black;
-  background-color: var(--dark_yellow);
+  background-color: #2a2a2a;
 }
 
 .toc ul {
-      padding-top: 1rem;
       margin-left: 1rem;
       padding-left: 1rem;
 }
