@@ -9,8 +9,10 @@
 
 body {
   background-color: rgb(29, 29, 31);
-  color: white;
-  font-size: 125%;
+  color: #c3c3c3;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
   line-height: 1.5;
   padding: 1rem;
   margin: 0 auto;
@@ -23,6 +25,60 @@ body {
   width: 95%;
   max-width: 75rem;
   margin-bottom: 3rem;
+  margin-top: 2rem;
+}
+
+hr {
+	margin: 1.25rem 0;
+	color: inherit;
+	background-color: currentColor;
+	border: 0;
+	border-top: 1px solid #444;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-top: 0;
+	margin-bottom: 0.5rem;
+	font-weight: 600;
+}
+
+h1 {
+	font-size: 2rem;
+}
+
+h2 {
+	font-size: 1.75rem;
+}
+
+h3 {
+	font-size: 1.5rem;
+}
+
+h4 {
+	font-size: 1.375rem;
+}
+
+h5 {
+	font-size: 1.25rem;
+}
+
+h6 {
+	font-size: 1.125rem;
+}
+
+p {
+	margin-top: 0;
+	margin-bottom: 1rem;
+}
+
+blockquote {
+  padding: 0 1rem;
+  border-left: 5px solid #f8ae00;
 }
 
 .site-header{
@@ -54,8 +110,8 @@ a:active {
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  padding-left: 3rem;
-  padding-right: 3rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .site-nav a {
@@ -145,4 +201,54 @@ a:active {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+pre {
+	display: block;
+	margin-top: 0;
+	margin-bottom: 1rem;
+	overflow: auto;
+}
+
+pre code {
+	font-size: inherit;
+	color: inherit;
+	word-break: normal;
+  background-color: inherit;
+}
+
+
+code {
+  color: #e44;
+	padding: 1px 3px;
+	background-color: #111;
+	border-radius: 2px;
+  word-wrap: break-word;
+}
+
+table {
+	width: 100%;
+	margin-bottom: 1rem;
+	border-spacing: 0;
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+}
+
+td, th {
+  padding: .3125rem .625rem;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+kbd {
+  background-color: #eee;
+  border-radius: 3px;
+  border: 1px solid #b4b4b4;
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.2),
+    0 2px 0 0 rgba(255, 255, 255, 0.7) inset;
+  color: #333;
+  display: inline-block;
+  line-height: 1;
+  padding: 2px 4px;
 }
