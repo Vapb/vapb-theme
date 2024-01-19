@@ -32,7 +32,25 @@ According to the [HTML5 specification](https://www.w3.org/TR/html5/dom.html#elem
 
 Elements can have attributes, which control how the elements work. For example, hyperlink are formed using the `a` element and its `href` attribute.
 
-## List Types
+
+## Emphasis
+
+---
+
+Emphasis, aka italics, with asterisks or underscores. **Strong emphasis**, aka bold, with asterisks or underscores. Combined emphasis with asterisks and underscores. ~~Strikethrough~~ with two tildes. **_Bold and nested italic_**. **_All bold and italic_**. **_*Bold and italic nested*_**.
+
+
+# Images
+
+---
+
+{{<figure
+  src="/images/profile.jpg"
+  alt="example-img"
+  caption="This is the default position of a figcaption, but it can be centered or at the end." >}}
+
+
+## Lists
 
 ### Ordered List
 
@@ -81,6 +99,16 @@ HTML also supports definition lists.
   <dt>Reposado tequila</dt>
   <dd>Typically aged in wooden barrels for between two and eleven months...</dd>
 </dl>
+
+
+## Task:
+
+{{< task-list >}}
+
+- [x] Write the press release
+- [ ] Update the website
+- [ ] Contact the media
+
 
 ## Blockquotes
 
