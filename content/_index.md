@@ -2,7 +2,7 @@
 title: "Home"
 ---
 
-# Welcome
+# Welcome 
 
 Welcome to your new Hugo site.
 

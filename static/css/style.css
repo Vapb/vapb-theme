@@ -208,6 +208,7 @@ pre {
 	margin-top: 0;
 	margin-bottom: 1rem;
 	overflow: auto;
+  border-radius: 5px;
 }
 
 pre code {
@@ -217,6 +218,9 @@ pre code {
   background-color: inherit;
 }
 
+pre code span[style*="display:flex;"] {
+	margin-left: 1rem;
+}
 
 code {
   color: #e44;

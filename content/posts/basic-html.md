@@ -47,6 +47,7 @@ Emphasis, aka italics, with asterisks or underscores. **Strong emphasis**, aka b
 {{<figure
   src="/images/profile.jpg"
   alt="example-img"
+  title="Image Example"
   caption="This is the default position of a figcaption, but it can be centered or at the end." >}}
 
 
@@ -88,6 +89,30 @@ Emphasis, aka italics, with asterisks or underscores. **Strong emphasis**, aka b
   </li>
   <li>Third item</li>
 </ul>
+
+### Hugo Shortcodes
+
+#### Youtube example
+
+{{< youtube nIdGgEhr1s8 >}}
+
+### Highlights
+
+{{< highlight go-html-template >}}
+{{ range .Pages }}
+  <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+{{ end }}
+{{< /highlight >}}
+
+
+### Tweeter
+
+{{< tweet user="SanDiegoZoo" id="1453110110599868418" >}}
+
+
+### Vimeo
+
+{{< vimeo 55073825 >}}
 
 ### Definition List
 
