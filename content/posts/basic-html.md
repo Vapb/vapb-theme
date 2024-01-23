@@ -1,5 +1,6 @@
 ---
 title: Basic HTML Elements
+author: "vapb"
 description: Example test article that contains basic HTML elements for text formatting on the Web.
 date: 2019-09-24
 categories:
@@ -8,10 +9,13 @@ tags:
   - "HTML"
   - "CSS"
   - "Basic Elements"
+toc: true
 ---
 
-The main purpose of this article is to make sure that all basic HTML Elements are decorated with CSS so as to not miss any possible elements when creating new themes for Hugo.
-<!--more-->
+This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.
+
+
+---
 
 ## Headings
 
@@ -24,7 +28,7 @@ Let's start with all possible headings. The HTML `<h1>`—`<h6>` elements repres
 ##### Heading 5
 ###### Heading 6
 
-***
+---
 
 ## Paragraph
 
@@ -33,16 +37,33 @@ According to the [HTML5 specification](https://www.w3.org/TR/html5/dom.html#elem
 Elements can have attributes, which control how the elements work. For example, hyperlink are formed using the `a` element and its `href` attribute.
 
 
-## Emphasis
+---
+
+## Links
+
+This is a [internal link](/posts/emoji-support) to another page. [This one](https://www.gohugo.io) points to a external page nad will be open in a new tag.
+
 
 ---
+
+
+## Emphasis
 
 Emphasis, aka italics, with asterisks or underscores. **Strong emphasis**, aka bold, with asterisks or underscores. Combined emphasis with asterisks and underscores. ~~Strikethrough~~ with two tildes. **_Bold and nested italic_**. **_All bold and italic_**. **_*Bold and italic nested*_**.
 
 
-# Images
 
 ---
+
+## Foot Notes
+
+Check it[^2] at the end[^3] of this text[^4].
+
+
+---
+
+## Images
+
 
 {{<figure
   src="/images/profile.jpg"
@@ -90,29 +111,7 @@ Emphasis, aka italics, with asterisks or underscores. **Strong emphasis**, aka b
   <li>Third item</li>
 </ul>
 
-### Hugo Shortcodes
-
-#### Youtube example
-
-{{< youtube nIdGgEhr1s8 >}}
-
-### Highlights
-
-{{< highlight go-html-template >}}
-{{ range .Pages }}
-  <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-{{ end }}
-{{< /highlight >}}
-
-
-### Tweeter
-
-{{< tweet user="SanDiegoZoo" id="1453110110599868418" >}}
-
-
-### Vimeo
-
-{{< vimeo 55073825 >}}
+---
 
 ### Definition List
 
@@ -126,6 +125,9 @@ HTML also supports definition lists.
 </dl>
 
 
+---
+
+
 ## Task:
 
 {{< task-list >}}
@@ -133,6 +135,8 @@ HTML also supports definition lists.
 - [x] Write the press release
 - [ ] Update the website
 - [ ] Contact the media
+
+---
 
 
 ## Blockquotes
@@ -151,6 +155,8 @@ Blockquote with a citation.
 </blockquote>
 
 According to Mozilla's website, <q cite="https://www.mozilla.org/en-US/about/history/details/">Firefox 1.0 was released in 2004 and became a big success.</q>
+
+---
 
 ## Tables
 
@@ -175,6 +181,9 @@ You can also use inline Markdown.
 | Inline     | Markdown  | In                | Table      |
 | ---------- | --------- | ----------------- | ---------- |
 | *italics*  | **bold**  | ~~strikethrough~~ | `code`     |
+
+
+---
 
 ## Code
 
@@ -204,6 +213,9 @@ You can also use inline Markdown.
 </html>
 {{< /highlight >}}
 
+---
+
+
 ## Other stuff — abbr, sub, sup, kbd, etc.
 
 <abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
@@ -217,3 +229,9 @@ X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
 Press <kbd>X</kbd> to win. Or press <kbd><kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>F</kbd></kbd> to show FPS counter.
 
 <mark>As a unit of information in information theory, the bit has alternatively been called a shannon</mark>, named after Claude Shannon, the founder of field of information theory.
+
+
+[^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
+[^2]: A footnote.
+[^3]: Another one.
+[^4]: Cool, right?
