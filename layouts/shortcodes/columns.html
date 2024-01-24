@@ -1,0 +1,8 @@
+<div class="book-columns">
+    {{ range split .Inner "<--->" }}
+      <div>
+        {{ . | $.Page.RenderString }}
+      </div>
+    {{ end }}
+</div>
+    

@@ -283,3 +283,40 @@ details summary {
 details[open] summary {
   margin-bottom: 0;
 }
+
+.book-columns {
+  display: flex;
+}
+
+.book-columns > div {
+  flex: 1;
+  margin: 1rem 0;
+  min-width: 10rem;
+  padding: 0 1rem;
+}
+
+.book-columns > div > h2{
+  text-align: center;
+}
+
+
+.book-hint {
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 15px;
+  border-left: 15px solid;
+  border-right: 10px solid;
+}
+
+.info{
+  border-color: #6bf;
+  background-color: rgba(102, 187, 255, 0.1);
+}
+.warning {
+  border-color: #fd6;
+  background-color: rgba(255, 221, 102, 0.1);
+}
+.danger {
+  border-color: #f66;
+  background-color: rgba(255, 102, 102, 0.1);
+}
