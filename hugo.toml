@@ -2,6 +2,7 @@ baseURL = 'http://example.org/'
 languageCode = 'en-us'
 title = 'vapb-theme'
 enableEmoji = true
+paginate = 25
 
 [menu]
   [[menu.main]]

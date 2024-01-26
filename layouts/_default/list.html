@@ -1,18 +1,23 @@
 {{ partial "header.html" . }}
 
-<h1>{{ .Title }}</h1>
-
-{{ .Content }}
-
-{{ range.Data.Pages }}
-<article class="post-snippet">
-  <h3>
-    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-  </h3>
-	<time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-		{{ .Date.Format "January 2, 2006" }}
-	</time>
-</article>
-{{ end }}
+<section class="container list">
+  <header>
+    <h1 class="title">
+      {{ .Title }}
+    </h1>
+  </header>
+  {{ .Content }}  
+  <ul>
+    {{ range .Paginator.Pages }}
+    <li>
+      <div>
+        <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
+        <span class="date">{{ .Date | time.Format (.Site.Params.dateFormat | default "January 2, 2006" ) }}</span>
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+  {{ partial "pagination.html" . }}
+</section>
 
 {{ partial "footer.html" . }}

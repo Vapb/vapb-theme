@@ -3,8 +3,6 @@ title: Rich Content and Shortcodes
 author: "vapb"
 description: Example a brief description of Hugo Shortcodes
 date: 2019-09-24
-categories:
-  - "Development"
 tags: ["HTML", "CSS", "Basic Elements"]
 toc: true
 ---

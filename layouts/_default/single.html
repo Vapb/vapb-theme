@@ -1,8 +1,23 @@
 {{ partial "header.html" . }}
 
-<h1>{{ .Title }}</h1>
+<div class="post-title">
+    <h1 class="title">
+        {{ .Title }}
+    </h1>
+</div>
 
-<p><i>{{ .Description }}</i></p>
+<div class="post-meta">
+    <p><i>{{ .Description }}</i></p>
+    <div class="date">
+        <span class="posted-on">
+          <i class="fa fa-calendar" aria-hidden="true">Date : </i>
+          <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+            {{ .Date | time.Format (.Site.Params.dateFormat | default "2 January 2006" ) }}
+          </time>
+        </span>
+      </div>
+    {{ with .GetTerms "tags" }}{{ partial "tags.html" . }}{{ end }}
+</div>
 
 {{ partial "toc.html" .}}
 
