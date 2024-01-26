@@ -377,3 +377,8 @@ details[open] summary {
     background-color: var(--dark_orange);
     border-color: #dee2e6;
 }
+
+.post_img {
+  width:100%;
+  height: 400px;
+}

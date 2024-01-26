@@ -1,5 +1,9 @@
 {{ partial "header.html" . }}
 
+{{ with .Resources.GetMatch "cover.*" }}
+      <img src="{{ .RelPermalink }}" class="post_img center" alt="CoverImage">
+{{ end }}
+
 <div class="post-title">
     <h1 class="title">
         {{ .Title }}
