@@ -22,6 +22,12 @@ paginate = 25
     name = "Projects"
     url = "/projects"
     weight = 30
+  
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags"
+    weight = 40
 
 [markup]
   [markup.tableOfContents]

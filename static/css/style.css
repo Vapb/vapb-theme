@@ -382,3 +382,10 @@ details[open] summary {
   width:100%;
   height: 400px;
 }
+
+footer{
+  display: table;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
