@@ -199,7 +199,6 @@ mark {
       line-height: 1.4;
 }
 
-
 /* OTHERS */
 
 .center {
@@ -299,7 +298,6 @@ details[open] summary {
   text-align: center;
 }
 
-
 .book-hint {
   margin: 1rem;
   padding: 1rem;
@@ -325,18 +323,14 @@ details[open] summary {
   margin-bottom: 1rem;
 }
 
-.tags {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
 .tag a {
   padding: 0.25rem;
   color : var(--bright_orange);
   background-color: #2a2a2a;
   border-radius: 5px;
+  margin: 3px;
+  text-decoration: none;
 }
-
 
 .pagination {
     display: flex;
@@ -388,4 +382,11 @@ footer{
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+.tags-list {
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    padding-left: 0;
 }
