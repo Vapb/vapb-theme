@@ -8,11 +8,12 @@
   </header>
   {{ .Content }}  
   <ul>
-    {{ range .Paginator.Pages }}
+    {{ range .Paginator.Pages.ByDate.Reverse }}
     <li>
       <div>
+        <span class="date">{{ .Date | time.Format (.Site.Params.dateFormat | default "02 January 2006" ) }}</span>
+        <span>-</span>
         <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
-        <span class="date">{{ .Date | time.Format (.Site.Params.dateFormat | default "January 2, 2006" ) }}</span>
       </div>
     </li>
     {{ end }}
