@@ -1,31 +1,30 @@
 {{ partial "header.html" . }}
 
+<h1 id='MainTitle'>Welcome to VAPB THEME</h1>
+
 {{ .Content }}
 
 
-<ul>
-    {{ range $.Site.Home.Sections }}
-    <li>
-        <h1>Recent {{ .Title }}</h1>
-            <ul>
-              {{ range first 10 .Pages.ByDate }}
-                 <li>
-                    <span class="date">{{ .Date | time.Format (.Site.Params.dateFormat | default "January 2, 2006" ) }}</span>
-                    <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
-                    <span>{{ .Description }}</span>
-                 </li>
-              {{ end }}
-            </ul>
-    </li>
-    {{ end }}
-</ul>
+{{ range $.Site.Home.Sections }}
+    <h1>Recent {{ .Title }}</h1>
+    <ul>
+        {{ range first 10 .Pages.ByDate.Reverse }}
+        <li>
+            <span class="date">{{ .Date | time.Format (.Site.Params.dateFormat | default "02 January 2006" ) }}</span>
+            <span>-</span>
+            <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+    </ul>
+{{ end }}
 
-<h2>All Tags</h2>
-<ul>
+
+<h1>All Tags</h1>
+<ul class="tags-list">
     {{range site.Taxonomies.tags.Alphabetical}}
-    <li>
-        <a href={{ .Page.RelPermalink }} title="all pages with “{{.Page.Title}}” ">{{.Page.Title}}</a> {{.Count}}
-    </li>
+        <div class="tag">
+            <a href={{ .Page.RelPermalink }} title="all pages with “{{.Page.Title}}” ">{{.Page.Title}} {{.Count}}</a>
+        </div>
     {{end}}
 </ul>
 
