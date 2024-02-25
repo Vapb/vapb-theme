@@ -2,4 +2,32 @@
 
 {{ .Content }}
 
+
+<ul>
+    {{ range $.Site.Home.Sections }}
+    <li>
+        <h1>Recent {{ .Title }}</h1>
+            <ul>
+              {{ range first 10 .Pages.ByDate }}
+                 <li>
+                    <span class="date">{{ .Date | time.Format (.Site.Params.dateFormat | default "January 2, 2006" ) }}</span>
+                    <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
+                    <span>{{ .Description }}</span>
+                 </li>
+              {{ end }}
+            </ul>
+    </li>
+    {{ end }}
+</ul>
+
+<h2>All Tags</h2>
+<ul>
+    {{range site.Taxonomies.tags.Alphabetical}}
+    <li>
+        <a href={{ .Page.RelPermalink }} title="all pages with “{{.Page.Title}}” ">{{.Page.Title}}</a> {{.Count}}
+    </li>
+    {{end}}
+</ul>
+
+
 {{ partial "footer.html" . }}

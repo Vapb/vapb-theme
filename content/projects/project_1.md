@@ -1,6 +1,7 @@
 ---
 title: "Project_1"
 date: 2023-08-21T20:54:36-03:00
+description: First project description
 ---
 
 Here's an project example.

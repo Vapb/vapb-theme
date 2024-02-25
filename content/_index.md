@@ -4,7 +4,7 @@ title: "Home"
 
 # Welcome 
 
-Welcome to your new Hugo site.
+Welcome to my theme for HUGO.
 
 Now go build something great.
 
