@@ -23,7 +23,7 @@
 <ul class="tags-list">
     {{range site.Taxonomies.tags.Alphabetical}}
         <div class="tag">
-            <a href={{ .Page.RelPermalink }} title="all pages with “{{.Page.Title}}” ">{{.Page.Title}} {{.Count}}</a>
+            <a href={{ .Page.RelPermalink }} title="all pages with “{{.Page.Title}}” ">{{.Page.Title}} <sup>{{.Count}}</sup></a>
         </div>
     {{end}}
 </ul>
