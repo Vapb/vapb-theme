@@ -390,3 +390,20 @@ footer{
     flex-wrap: wrap;
     padding-left: 0;
 }
+
+.social-media {
+  display: flex;
+  margin-bottom: 25px;
+  justify-content: space-evenly;
+  padding-left: 25%;
+  padding-right: 25%;
+}
+
+.social-media a {
+  padding: 0.25rem;
+  color: var(--bright_orange);
+  background-color: #2a2a2a;
+  border-radius: 5px;
+  margin: 3px;
+  text-decoration: none;
+}
