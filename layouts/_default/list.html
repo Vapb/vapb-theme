@@ -1,23 +1,36 @@
 {{ partial "header.html" . }}
 
-<section class="container list">
-  <header>
-    <h1 class="title">
-      {{ .Title }}
-    </h1>
-  </header>
-  {{ .Content }}  
-  <ul>
-    {{ range .Paginator.Pages.ByDate.Reverse }}
-    <li>
-      <div>
-        <span class="date">{{ .Date | time.Format (.Site.Params.dateFormat | default "02 January 2006" ) }}</span>
-        <span>-</span>
-        <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
-      </div>
-    </li>
-    {{ end }}
+<section class="container">
+  <h1>Welcome to the {{ .Title }} Page</h1>
+  <p>Explore posts by {{ .Title }} below.</p>
+  {{  if strings.HasSuffix .Page.Permalink "/tags/" }}
+  <!-- Custom content for /tags/ page -->
+  <ul class="list-tags">
+      {{range site.Taxonomies.tags.Alphabetical}}
+          <div class="tag">
+              <a href={{ .Page.RelPermalink }} title="all pages with “{{.Page.Title}}” ">{{.Page.Title}} - {{.Count}}</a>
+          </div>
+      {{end}}
   </ul>
+
+
+
+  {{ else }}
+  <div class="timeline">
+    <ul>
+      {{ range .Paginator.Pages.ByDate.Reverse }}
+      <li>
+        <div class="flex">
+          <span>{{ .Date | time.Format (.Site.Params.dateFormat | default "02 January 2006") }}</span>
+            <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
+            <div>{{ .Summary | truncate 100 }}</div>
+        </div>
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  </div>
+
   {{ partial "pagination.html" . }}
 </section>
 
