@@ -36,4 +36,4 @@ paginate = 25
     startLevel = 2
 
   [markup.goldmark.renderer]
-  unsafe= true
+  unsafe= true 
