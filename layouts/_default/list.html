@@ -2,7 +2,7 @@
 
 <section class="container">
   <h1>Welcome to the {{ .Title }} Page</h1>
-  <p>Explore posts by {{ .Title }} below.</p>
+  <p>Explore all {{ .Title }} below.</p>
   {{  if strings.HasSuffix .Page.Permalink "/tags/" }}
   <!-- Custom content for /tags/ page -->
   <ul class="list-tags">
