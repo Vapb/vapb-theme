@@ -23,7 +23,7 @@
         <div class="flex">
           <span>{{ .Date | time.Format (.Site.Params.dateFormat | default "02 January 2006") }}</span>
             <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
-            <div>{{ .Summary | truncate 100 }}</div>
+            <div>{{ .Description | truncate 100 }}</div>
         </div>
       </li>
       {{ end }}
