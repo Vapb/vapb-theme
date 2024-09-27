@@ -8,7 +8,7 @@
   <ul class="list-tags">
       {{range site.Taxonomies.tags.Alphabetical}}
           <div class="tag">
-              <a href={{ .Page.RelPermalink }} title="all pages with “{{.Page.Title}}” ">{{.Page.Title}} - {{.Count}}</a>
+              <li><a href={{ .Page.RelPermalink }} title="all pages with “{{.Page.Title}}” ">{{.Page.Title}} - {{.Count}}</a></li>
           </div>
       {{end}}
   </ul>
@@ -20,10 +20,11 @@
     <ul>
       {{ range .Paginator.Pages.ByDate.Reverse }}
       <li>
-        <div class="flex">
+        <div class="timeline-row">
+          <div class="test"></div>
           <span>{{ .Date | time.Format (.Site.Params.dateFormat | default "02 January 2006") }}</span>
-            <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
-            <div>{{ .Description | truncate 100 }}</div>
+          <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
+          <div class="desc">{{ .Description | truncate 100 }}</div>
         </div>
       </li>
       {{ end }}
