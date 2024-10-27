@@ -1,6 +1,6 @@
 baseURL = 'http://example.org/'
 languageCode = 'en-us'
-title = 'vapb-theme'
+title = 'VAPB THEME'
 enableEmoji = true
 paginate = 25
 

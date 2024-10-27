@@ -6,7 +6,7 @@
       <img src="{{ relURL "images/profile.png" }}">
     </div>
     <div class="infos">
-      <h1 id='MainTitle'>Welcome to VAPB THEME</h1>
+      <h1 id='MainTitle'>Welcome to {{ .Site.Title }}</h1>
       <h3>This is the most epic subtitle ever.</h3>
       <h3>Current Status</h3>
       <ul class="stats">
@@ -57,6 +57,6 @@
 </ul>
 
 
-<script src= "/js/animate.js"></script>
+<script src="{{ relURL "js/animate.js" }}"></script>
 
 {{ partial "footer.html" . }}
