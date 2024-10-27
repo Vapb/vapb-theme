@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="profile-pic">
-      <img src="/images/profile.png">
+      <img src="{{ "images/profile.png" | relURL}}">
     </div>
     <div class="infos">
       <h1 id='MainTitle'>Welcome to VAPB THEME</h1>
@@ -31,17 +31,21 @@
 {{ .Content }}
 
 {{ range $.Site.Home.Sections }}
-    <h1>Recent {{ .Title }}</h1>
-    <ul>
-        {{ range first 10 .Pages.ByDate.Reverse }}
-        <li>
-            <span class="date">{{ .Date | time.Format (.Site.Params.dateFormat | default "02 January 2006" ) }}</span>
-            <span>-</span>
-            <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
-        </li>
-        {{ end }}
-    </ul>
+    {{ if ne .Title "Cvs" }}
+        <h1>Recent {{ .Title }}</h1>
+        <ul>
+            {{ range first 10 .Pages.ByDate.Reverse }}
+            <li>
+                <span class="date">{{ .Date | time.Format (.Site.Params.dateFormat | default "02 January 2006" ) }}</span>
+                <span>-</span>
+                <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
+            </li>
+            {{ end }}
+        </ul>
+    {{ end }}
 {{ end }}
+
+
 
 <h1>All Tags</h1>
 <ul class="tags-list">
