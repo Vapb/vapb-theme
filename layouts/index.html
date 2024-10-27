@@ -1,22 +1,17 @@
 {{ partial "header.html" . }}
 
-<h1 id='MainTitle'>Welcome to VAPB THEME</h1>
-
 
 <div class="card">
-    <div class="img">
-      <img src="/images/profile.jpg">
+    <div class="profile-pic">
+      <img src="/images/profile.png">
     </div>
     <div class="infos">
-      <div class="name">
-        NAME TESTE THING THING
-      </div>
-      <p class="text">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-      </p>
+      <h1 id='MainTitle'>Welcome to VAPB THEME</h1>
+      <h3>This is the most epic subtitle ever.</h3>
+      <h3>Current Status</h3>
       <ul class="stats">
         <li>
-          <h3>Project</h3>
+          <h3>Projects</h3>
           <p>{{ add (len (where .Site.Pages "Section" "projects")) -1 }}</p>
         </li>
         <li>
@@ -29,11 +24,6 @@
         </li>
       </ul>
 
-      <div class="links">
-        <a class="view" href="https://www.linkedin.com/in/victor-burgardt-38bb00194/" target="_blank">Linkedin</a>
-        <a class="view" href="https://github.com/Vapb" target="_blank">GitHub</a>
-        <a class="view" href="./about/">About me</a>
-    </div>
     </div>
   </div>
 
