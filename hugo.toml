@@ -4,6 +4,9 @@ title = 'VAPB THEME'
 enableEmoji = true
 paginate = 25
 
+[params]
+  subtitle = "This is the most epic subtitle ever."
+
 [menu]
   [[menu.main]]
     identifier = "posts"
