@@ -486,8 +486,14 @@ footer{
     background-color: var(--red_orange);
 }
 
+#introduction {
+  font-style: italic;
+  font-size: 1.2rem;
+}
 
 .card {
+  display: flex;
+  align-items: center;
   margin-bottom: 1rem;
 }
 
@@ -497,12 +503,13 @@ footer{
 }
 
 .card img {
-  width: 90%;
+  width: 100%;
   border-radius: 50%;
 }
 
 .card .infos {
-  padding: 1rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
   display: grid;
   place-items: center;
   width: 80%;
@@ -529,6 +536,8 @@ footer{
 
 
 .stats {
+  display: flex;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
@@ -561,9 +570,4 @@ footer{
   color: #FFF;
 }
 
-.card,
-.stats {
-  display: flex;
-  list-style: none;
-  align-items: center;
-}
+

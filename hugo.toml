@@ -5,7 +5,8 @@ enableEmoji = true
 paginate = 25
 
 [params]
-  subtitle = "This is the most epic subtitle ever."
+  subtitle = "This is the most epic subtitle ever"
+  introduction = "This is the most epic introduction ever"
 
 [menu]
   [[menu.main]]
