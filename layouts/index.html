@@ -32,7 +32,7 @@
 {{ .Content }}
 
 {{ range $.Site.Home.Sections }}
-    {{ if ne .Title "Cvs" }}
+    {{ if and (ne .Title "Cvs") (ne .Title "Abouts")}}
         <h1>Recent {{ .Title }}</h1>
         <ul>
             {{ range first 10 .Pages.ByDate.Reverse }}
