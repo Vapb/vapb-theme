@@ -1,14 +1,15 @@
 :root {
   --red_orange: #ff4d00;
-  --bright_orange: #f07900;
-  --dark_orange: #602320;
-  --dark_yellow: #eb8c00;
+  --bright_orange: #deb841;
+  --dark_yellow: #de9e36;
+  --shadow_purple: #37323e;
+  --dark_grey: #2a2a2a;
 }
 
 /* LAYOUT */
 
 body {
-  background-color: rgb(29, 29, 31);
+  background-color: var(--shadow_purple);
   color: #c3c3c3;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
@@ -90,9 +91,6 @@ a {
   color: var(--bright_orange);
 }
 
-a:visited {
-  color: var(--dark_orange);
-}
 
 a:hover {
   color: var(--red_orange);
@@ -185,7 +183,7 @@ mark {
   margin: 1.1rem 0 1rem 0;
   padding: .5rem 1rem .5rem 1rem;
   border-radius: .3rem;
-  background-color: #2a2a2a;
+  background-color: var(--dark_grey);
 }
 
 .toc ul {
@@ -325,7 +323,7 @@ details[open] summary {
 .tag a {
   padding: 0.25rem;
   color : var(--bright_orange);
-  background-color: #2a2a2a;
+  background-color: var(--dark_grey);
   border-radius: 5px;
   margin: 3px;
   text-decoration: none;
@@ -367,7 +365,6 @@ details[open] summary {
 .page-item.active .page-link {
     z-index: 1;
     color: #fff;
-    background-color: var(--dark_orange);
     border-color: #dee2e6;
 }
 
@@ -410,7 +407,7 @@ footer{
 .social-media a {
   padding: 0.25rem;
   color: var(--bright_orange);
-  background-color: #2a2a2a;
+  background-color: var(--dark_grey);
   border-radius: 5px;
   margin: 3px;
   text-decoration: none;
