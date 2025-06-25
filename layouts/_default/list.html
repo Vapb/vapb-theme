@@ -23,8 +23,8 @@
         <div class="timeline-row">
           <div class="test"></div>
           <span>{{ .Date | time.Format (.Site.Params.dateFormat | default "02/01/2006") }}</span>
-          <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
-          <div class="desc">{{ .Description | truncate 100 }}</div>
+          <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title | truncate 25 }}</a>
+          <div class="desc">{{ .Description | truncate 75 }}</div>
         </div>
       </li>
       {{ end }}

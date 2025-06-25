@@ -425,7 +425,7 @@ footer{
 }
 
 .timeline ul li {
-    padding: 10px 0px;
+    padding: 8px 0px;
     position: relative;
     cursor: pointer;
     transition: .5s;
@@ -443,20 +443,30 @@ footer{
     padding-left: 10px;
     color: #333;
     margin: 0px 5px 0px 0px;
+    transition: all 0.5s ease;
 }
 
 .timeline-row {
   display: flex;
+  align-items: center;
   border-radius: 25px;
   font-size: 15px;
   text-align: left;
   align-items: center;
 }
 
-.timeline .test{
-  width: 10px;
-  background-color: var(--bright_orange);
-  height: 5px;
+.timeline li {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: riseIn 0.5s ease forwards;
+  animation-delay: calc(var(--i) * 1s);
+}
+
+@keyframes riseIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .timeline-row .title{
@@ -471,17 +481,13 @@ footer{
     position: absolute;
     content: '';
     width: 10px;
-    height: 10px;
+    height: 5px;
+    padding-right: 2px;
     background-color: var(--bright_orange);
     border-radius: 10%;
     left: -11px;
     top: 18px;
     transition: .5s;
-}
-
-
-.timeline ul li:hover:before {
-    background-color: var(--red_orange);
 }
 
 #introduction {
