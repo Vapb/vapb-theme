@@ -4,11 +4,33 @@
       {{ .Site.Title }}
     </a>
     <ul class="main-menu">
-      {{ range.Site.Menus.main }}
+      {{ range .Site.Menus.main }}
       <li>
-        <a href="{{ .URL }}">{{ .Name }}</a>
+        <a href="{{ .URL | absLangURL }}">{{ .Name }}</a>
       </li>
       {{ end }}
+      <li class="language-switcher">
+        <div class="lang-selector">
+          <span class="current-lang">{{ if eq $.Site.Language.Lang "en" }}EN{{ else }}PT{{ end }}</span>
+          <div class="lang-dropdown">
+            {{ if $.IsTranslated }}
+              {{ range $.Translations }}
+                <a href="{{ .Permalink }}" lang="{{ .Lang }}" class="lang-option">
+                  {{ if eq .Lang "en" }}🇺🇸 English{{ else }}🇧🇷 Português{{ end }}
+                </a>
+              {{ end }}
+            {{ else }}
+              {{ range $.Site.Languages }}
+                {{ if not (eq .Lang $.Site.Language.Lang) }}
+                  <a href="/{{ .Lang }}/" lang="{{ .Lang }}" class="lang-option">
+                    {{ if eq .Lang "en" }}🇺🇸 English{{ else }}🇧🇷 Português{{ end }}
+                  </a>
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      </li>
     </ul>
   </nav>
 </header>

@@ -1,0 +1,32 @@
+[welcome]
+other = "Welcome to"
+
+[recent]
+other = "Recent"
+
+[all_tags]
+other = "All Tags"
+
+[projects]
+other = "Projects"
+
+[posts]
+other = "Posts"
+
+[tags]
+other = "Tags"
+
+[current_status]
+other = "Current Status"
+
+[explore_all]
+other = "Explore all"
+
+[below]
+other = "below"
+
+[date]
+other = "Date"
+
+[language_switcher]
+other = "Language"
