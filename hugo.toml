@@ -1,36 +1,78 @@
 baseURL = 'http://example.org/'
-languageCode = 'en-us'
-title = 'VAPB THEME'
+defaultContentLanguage = 'en'
+defaultContentLanguageInSubdir = true
 enableEmoji = true
 paginate = 25
 
-[params]
-  subtitle = "This is the most epic subtitle ever"
-  introduction = "This is the most epic introduction ever"
+[languages]
+  [languages.en]
+    contentDir = 'content/en'
+    languageName = 'English'
+    languageCode = 'en-us'
+    title = 'VAPB THEME'
+    weight = 1
+    [languages.en.params]
+      subtitle = "This is the most epic subtitle ever"
+      introduction = "This is the most epic introduction ever"
 
-[menu]
-  [[menu.main]]
+  [languages.pt]
+    contentDir = 'content/pt'
+    languageName = 'Português'
+    languageCode = 'pt-br'
+    title = 'TEMA VAPB'
+    weight = 2
+    [languages.pt.params]
+      subtitle = "Este é o subtítulo mais épico de todos"
+      introduction = "Esta é a introdução mais épica de todas"
+
+[languages.en.menu]
+  [[languages.en.menu.main]]
     identifier = "posts"
     name = "Posts"
-    url = "/posts"
+    url = "posts"
     weight = 10
 
-  [[menu.main]]
+  [[languages.en.menu.main]]
     identifier = "about"
     name = "About Me"
-    url = "/about"
+    url = "about"
     weight = 100
 
-  [[menu.main]]
+  [[languages.en.menu.main]]
     identifier = "projects"
     name = "Projects"
-    url = "/projects"
+    url = "projects"
     weight = 30
   
-  [[menu.main]]
+  [[languages.en.menu.main]]
     identifier = "tags"
     name = "Tags"
-    url = "/tags"
+    url = "tags"
+    weight = 40
+
+[languages.pt.menu]
+  [[languages.pt.menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "posts"
+    weight = 10
+
+  [[languages.pt.menu.main]]
+    identifier = "about"
+    name = "Sobre Mim"
+    url = "about"
+    weight = 100
+
+  [[languages.pt.menu.main]]
+    identifier = "projects"
+    name = "Projetos"
+    url = "projects"
+    weight = 30
+  
+  [[languages.pt.menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "tags"
     weight = 40
 
 [markup]

@@ -6,21 +6,21 @@
       <img src="{{ relURL "images/profile.png" }}">
     </div>
     <div class="infos">
-      <h1 id='MainTitle'>Welcome to {{ .Site.Title }}</h1>
+      <h1 id='MainTitle'>{{ i18n "welcome" }} {{ .Site.Title }}</h1>
       <h3>{{ .Site.Params.subtitle }}</h3>
       <h3 id="introduction">{{ .Site.Params.introduction }}</h3>
-      <h3>Current Status</h3>
+      <h3>{{ i18n "current_status" }}</h3>
       <ul class="stats">
         <li>
-          <h3>Projects</h3>
+          <h3>{{ i18n "projects" }}</h3>
           <p>{{ add (len (where .Site.Pages "Section" "projects")) -1 }}</p>
         </li>
         <li>
-          <h3>Posts</h3>
+          <h3>{{ i18n "posts" }}</h3>
           <p>{{ add (len (where .Site.Pages "Section" "posts")) -1 }}</p>
         </li>
         <li>
-          <h3>Tags</h3>
+          <h3>{{ i18n "tags" }}</h3>
           <p>{{ add (len (where .Site.Pages "Section" "tags")) -1 }}</p>
         </li>
       </ul>
@@ -33,7 +33,7 @@
 
 {{ range $.Site.Home.Sections }}
     {{ if and (ne .Title "Cvs") (ne .Title "Abouts")}}
-        <h1>Recent {{ .Title }}</h1>
+        <h1>{{ i18n "recent" }} {{ .Title }}</h1>
         <ul>
             {{ range first 10 .Pages.ByDate.Reverse }}
             <li>
@@ -48,7 +48,7 @@
 
 
 
-<h1>All Tags</h1>
+<h1>{{ i18n "all_tags" }}</h1>
 <ul class="tags-list">
     {{range site.Taxonomies.tags.Alphabetical}}
         <div class="tag">

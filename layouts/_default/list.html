@@ -1,8 +1,8 @@
 {{ partial "header.html" . }}
 
 <section class="container">
-  <h1>Welcome to the {{ .Title }} Page</h1>
-  <p>Explore all {{ .Title }} below.</p>
+  <h1>{{ i18n "welcome" }} {{ .Title }} Page</h1>
+  <p>{{ i18n "explore_all" }} {{ .Title }} {{ i18n "below" }}.</p>
   {{  if strings.HasSuffix .Page.Permalink "/tags/" }}
   <!-- Custom content for /tags/ page -->
   <ul class="list-tags">

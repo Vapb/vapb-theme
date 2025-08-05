@@ -1,0 +1,32 @@
+[welcome]
+other = "Bem-vindo ao"
+
+[recent]
+other = "Recentes"
+
+[all_tags]
+other = "Todas as Tags"
+
+[projects]
+other = "Projetos"
+
+[posts]
+other = "Posts"
+
+[tags]
+other = "Tags"
+
+[current_status]
+other = "Status Atual"
+
+[explore_all]
+other = "Explore todos"
+
+[below]
+other = "abaixo"
+
+[date]
+other = "Data"
+
+[language_switcher]
+other = "Idioma"
