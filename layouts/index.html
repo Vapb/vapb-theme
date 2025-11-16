@@ -9,19 +9,28 @@
       <h1 id='MainTitle'>{{ i18n "welcome" }} {{ .Site.Title }}</h1>
       <h3>{{ .Site.Params.subtitle }}</h3>
       <h3 id="introduction">{{ .Site.Params.introduction }}</h3>
-      <h3>{{ i18n "current_status" }}</h3>
       <ul class="stats">
-        <li>
+        <li class="stat-card">
+          <p class="stat-number" data-target="{{ add (len (where .Site.Pages "Section" "projects")) -1 }}">0</p>
           <h3>{{ i18n "projects" }}</h3>
-          <p>{{ add (len (where .Site.Pages "Section" "projects")) -1 }}</p>
         </li>
-        <li>
+        <li class="stat-card">
+          <p class="stat-number" data-target="{{ add (len (where .Site.Pages "Section" "posts")) -1 }}">0</p>
           <h3>{{ i18n "posts" }}</h3>
-          <p>{{ add (len (where .Site.Pages "Section" "posts")) -1 }}</p>
         </li>
-        <li>
+        <li class="stat-card">
+          <p class="stat-number" data-target="{{ add (len (where .Site.Pages "Section" "tags")) -1 }}">0</p>
           <h3>{{ i18n "tags" }}</h3>
-          <p>{{ add (len (where .Site.Pages "Section" "tags")) -1 }}</p>
+        </li>
+        <li class="stat-card">
+          {{ $posts := where .Site.RegularPages "Section" "posts" }}
+          {{ $latestPost := index ($posts.ByDate.Reverse) 0 }}
+          {{ if $latestPost }}
+            <p class="stat-date">{{ $latestPost.Date.Format "02/01/2006" }}</p>
+          {{ else }}
+            <p class="stat-date">--/--/----</p>
+          {{ end }}
+          <h3>{{ i18n "last_post" }}</h3>
         </li>
       </ul>
 
@@ -31,31 +40,38 @@
 
 {{ .Content }}
 
+<section class="recent-section">
 {{ range $.Site.Home.Sections }}
     {{ if and (ne .Title "Cvs") (ne .Title "Abouts")}}
-        <h1>{{ i18n "recent" }} {{ .Title }}</h1>
-        <ul>
-            {{ range first 10 .Pages.ByDate.Reverse }}
-            <li>
-                <span class="date">{{ .Date | time.Format (.Site.Params.dateFormat | default "02 January 2006" ) }}</span>
-                <span>-</span>
-                <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
-            </li>
-            {{ end }}
-        </ul>
+        <div class="section-block">
+            <h2 class="section-title">{{ i18n "recent" }} {{ .Title }}</h2>
+            <ul class="recent-list">
+                {{ range first 10 .Pages.ByDate.Reverse }}
+                <li class="recent-item">
+                    <span class="item-date">{{ .Date | time.Format (.Site.Params.dateFormat | default "02 January 2006" ) }}</span>
+                    <span class="separator">—</span>
+                    <a class="item-title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
     {{ end }}
 {{ end }}
+</section>
 
 
 
-<h1>{{ i18n "all_tags" }}</h1>
-<ul class="tags-list">
-    {{range site.Taxonomies.tags.Alphabetical}}
-        <div class="tag">
-            <a href={{ .Page.RelPermalink }} title="all pages with “{{.Page.Title}}” ">{{.Page.Title}} <sup>{{.Count}}</sup></a>
-        </div>
-    {{end}}
-</ul>
+<section class="tags-section">
+    <h2 class="section-title">{{ i18n "all_tags" }}</h2>
+    <div class="tags-grid">
+        {{range site.Taxonomies.tags.Alphabetical}}
+            <a href={{ .Page.RelPermalink }} class="tag-item" title="all pages with {{.Page.Title}}">
+                <span class="tag-name">{{.Page.Title}}</span>
+                <span class="tag-count">{{.Count}}</span>
+            </a>
+        {{end}}
+    </div>
+</section>
 
 
 <script src="{{ relURL "js/animate.js" }}"></script>

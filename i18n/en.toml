@@ -16,6 +16,9 @@ other = "Posts"
 [tags]
 other = "Tags"
 
+[last_post]
+other = "Last Post"
+
 [current_status]
 other = "Current Status"
 

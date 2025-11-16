@@ -77,7 +77,7 @@ paginate = 25
 
 [markup]
   [markup.tableOfContents]
-    endLevel = 4
+    endLevel = 6
     ordered = false
     startLevel = 2
 
