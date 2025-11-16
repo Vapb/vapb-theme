@@ -1,36 +1,36 @@
 {{ partial "header.html" . }}
 
-<section class="container">
-  <h1>{{ i18n "welcome" }} {{ .Title }} Page</h1>
-  <p>{{ i18n "explore_all" }} {{ .Title }} {{ i18n "below" }}.</p>
+<section class="container listing">
+  <div class="page-header">
+    <h1 class="page-title">{{ .Title }}</h1>
+    <p class="page-description">{{ i18n "explore_all" }} {{ .Title }} {{ i18n "below" }}</p>
+  </div>
+
   {{  if strings.HasSuffix .Page.Permalink "/tags/" }}
-  <!-- Custom content for /tags/ page -->
-  <ul class="list-tags">
+  <!-- Tags page -->
+  <div class="tags-grid">
       {{range site.Taxonomies.tags.Alphabetical}}
-          <div class="tag">
-              <li><a href={{ .Page.RelPermalink }} title="all pages with “{{.Page.Title}}” ">{{.Page.Title}} - {{.Count}}</a></li>
-          </div>
+          <a href={{ .Page.RelPermalink }} class="tag-item" title="all pages with {{.Page.Title}}">
+              <span class="tag-name">{{.Page.Title}}</span>
+              <span class="tag-count">{{.Count}}</span>
+          </a>
       {{end}}
-  </ul>
+  </div>
 
 
 
   {{ else }}
-  <div class="timeline">
-    <ul>
-      {{ range .Paginator.Pages.ByDate.Reverse }}
-      <li>
-        <div class="timeline-row">
-          <div class="test"></div>
-          <span>{{ .Date | time.Format (.Site.Params.dateFormat | default "02/01/2006") }}</span>
-          <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title | truncate 25 }}</a>
-          <div class="desc">{{ .Description | truncate 75 }}</div>
-        </div>
-      </li>
-      {{ end }}
-    </ul>
+  <!-- Posts/Projects list -->
+  <ul class="simple-list">
+    {{ range .Paginator.Pages.ByDate.Reverse }}
+    <li class="simple-item">
+      <span class="item-date">{{ .Date | time.Format (.Site.Params.dateFormat | default "02 January 2006") }}</span>
+      <span class="separator">—</span>
+      <a class="item-title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
+    </li>
     {{ end }}
-  </div>
+  </ul>
+  {{ end }}
 
   {{ partial "pagination.html" . }}
 </section>
