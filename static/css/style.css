@@ -753,6 +753,116 @@ details[open] summary {
 }
 
 /* ==========================================================================
+   Tag Graph (Obsidian-style graph view)
+   ========================================================================== */
+
+.graph-view-toggle {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.view-toggle-btn {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.view-toggle-btn:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-accent-primary);
+}
+
+.view-toggle-btn.active {
+  background-color: var(--color-accent-primary);
+  border-color: var(--color-accent-primary);
+  color: var(--color-text-dark);
+}
+
+.tag-graph-panel {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-secondary);
+  overflow: hidden;
+}
+
+.tag-graph-panel[hidden] {
+  display: none;
+}
+
+.tag-graph-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.tag-graph-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-dot-tag {
+  background-color: var(--color-accent-primary);
+}
+
+.legend-dot-post {
+  background-color: var(--nord8);
+}
+
+.graph-reset-btn {
+  margin-left: auto;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all var(--transition-fast);
+}
+
+.graph-reset-btn:hover {
+  color: var(--color-accent-primary);
+  border-color: var(--color-accent-primary);
+}
+
+#tag-graph-canvas {
+  display: block;
+  width: 100%;
+  height: 600px;
+  cursor: grab;
+  touch-action: none;
+}
+
+#tag-graph-canvas:active {
+  cursor: grabbing;
+}
+
+@media (max-width: 768px) {
+  #tag-graph-canvas {
+    height: 420px;
+  }
+}
+
+/* ==========================================================================
    Date Display
    ========================================================================== */
 

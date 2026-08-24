@@ -8,7 +8,12 @@
 
   {{  if strings.HasSuffix .Page.Permalink "/tags/" }}
   <!-- Tags page -->
-  <div class="tags-grid">
+  <div class="graph-view-toggle">
+    <button type="button" class="view-toggle-btn active" data-view="grid">{{ i18n "grid_view" }}</button>
+    <button type="button" class="view-toggle-btn" data-view="graph">{{ i18n "graph_view" }}</button>
+  </div>
+
+  <div class="tags-grid" data-view-panel="grid">
       {{range site.Taxonomies.tags.Alphabetical}}
           <a href={{ .Page.RelPermalink }} class="tag-item" title="all pages with {{.Page.Title}}">
               <span class="tag-name">{{.Page.Title}}</span>
@@ -17,7 +22,31 @@
       {{end}}
   </div>
 
+  <div class="tag-graph-panel" data-view-panel="graph" hidden>
+    <div class="tag-graph-controls">
+      <span class="tag-graph-legend"><span class="legend-dot legend-dot-tag"></span>{{ i18n "tags" }}</span>
+      <span class="tag-graph-legend"><span class="legend-dot legend-dot-post"></span>{{ i18n "posts" }}</span>
+      <button type="button" class="graph-reset-btn" id="tag-graph-reset">{{ i18n "reset_view" }}</button>
+    </div>
+    <canvas id="tag-graph-canvas"></canvas>
+  </div>
 
+  {{ $nodes := slice }}
+  {{ $links := slice }}
+  {{ range site.Taxonomies.tags.Alphabetical }}
+    {{ $nodes = $nodes | append (dict "id" .Page.RelPermalink "label" .Page.Title "type" "tag" "url" .Page.RelPermalink "count" .Count) }}
+  {{ end }}
+  {{ range site.RegularPages }}
+    {{ $page := . }}
+    {{ with $page.GetTerms "tags" }}
+      {{ $nodes = $nodes | append (dict "id" $page.RelPermalink "label" $page.Title "type" "post" "url" $page.RelPermalink "count" 0) }}
+      {{ range . }}
+        {{ $links = $links | append (dict "source" $page.RelPermalink "target" .RelPermalink) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  <script type="application/json" id="tag-graph-data">{{ (dict "nodes" $nodes "links" $links) | jsonify | safeJS }}</script>
+  <script src="{{ relURL "js/tag-graph.js" }}" defer></script>
 
   {{ else }}
   <!-- Posts/Projects list -->

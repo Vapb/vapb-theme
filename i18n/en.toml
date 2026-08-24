@@ -33,3 +33,12 @@ other = "Date"
 
 [language_switcher]
 other = "Language"
+
+[grid_view]
+other = "Grid"
+
+[graph_view]
+other = "Graph"
+
+[reset_view]
+other = "Reset view"
