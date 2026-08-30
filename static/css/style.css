@@ -1,75 +1,107 @@
 /* ==========================================================================
-   CSS Variables - Custom Hybrid Palette (Grey + Gold + Nord accents)
+   Color Scheme
    ========================================================================== */
 
 :root {
-  /* Custom Dark palette - Original theme backgrounds */
-  --bg-dark-primary: #37323e;
-  --bg-dark-secondary: #2a2a2a;
-  --bg-dark-tertiary: #3d3846;
-  --bg-dark-elevated: #45404d;
+  /* Tells the browser this page is intentionally dark, so it doesn't
+     apply its own automatic dark-mode inversion on top of our theme
+     (e.g. Firefox/Edge "force dark on websites" causing flashes on load). */
+  color-scheme: dark;
+}
 
-  /* Nord Polar Night - Alternative backgrounds */
-  --nord0: #2e3440;
-  --nord1: #3b4252;
-  --nord2: #434c5e;
-  --nord3: #4c566a;
+/* ==========================================================================
+   Fonts - Atkinson Hyperlegible (self-hosted, see static/fonts/atkinson-hyperlegible/OFL.txt)
+   ========================================================================== */
 
-  /* Nord Snow Storm - Light palette for text */
-  --nord4: #d8dee9;
-  --nord5: #e5e9f0;
-  --nord6: #eceff4;
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  src: url('/fonts/atkinson-hyperlegible/AtkinsonHyperlegible-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
-  /* Nord Frost - Blue/Cyan palette */
-  --nord7: #8fbcbb; /* Frost cyan */
-  --nord8: #88c0d0; /* Frost light blue */
-  --nord9: #81a1c1; /* Frost blue */
-  --nord10: #5e81ac; /* Frost dark blue */
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  src: url('/fonts/atkinson-hyperlegible/AtkinsonHyperlegible-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
-  /* Nord Aurora - Accent colors */
-  --nord11: #bf616a; /* Red */
-  --nord12: #d08770; /* Orange */
-  --nord13: #ebcb8b; /* Yellow */
-  --nord14: #a3be8c; /* Green */
-  --nord15: #b48ead; /* Purple */
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  src: url('/fonts/atkinson-hyperlegible/AtkinsonHyperlegible-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
 
-  /* Golden/Yellow palette - Warm accents */
-  --gold-bright: #f4c430;
-  --gold-medium: #daa520;
-  --gold-soft: #e6c547;
-  --gold-pale: #f0e68c;
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  src: url('/fonts/atkinson-hyperlegible/AtkinsonHyperlegible-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
 
-  /* Semantic color mapping - Custom hybrid palette */
+/* ==========================================================================
+   CSS Variables - Dark Orange Palette (Jannis Berndt)
+   ========================================================================== */
+
+:root {
+  /* Dark palette - backgrounds (GitHub-Dark family used by Dark Orange) */
+  --bg-dark-primary: #24292e;
+  --bg-dark-secondary: #1f2428;
+  --bg-dark-tertiary: #2f363d;
+  --bg-dark-elevated: #444d56;
+
+  /* Dark Orange core colors */
+  --dorange-foreground: #e1e4e8;
+  --dorange-foreground-dim: #d1d5da;
+  --dorange-muted: #959da5;
+  --dorange-border: #444d56;
+  --dorange-orange: #ff7300; /* Signature accent */
+  --dorange-orange-bright: #ffa600;
+  --dorange-orange-deep: #cf5d00;
+  --dorange-red: #ff5370;
+  --dorange-blue: #82aaff;
+  --dorange-green: #98c379;
+  --dorange-purple: #c792ea;
+  --dorange-cyan: #89ddff;
+  --dorange-yellow: #ffcb6b;
+
+  /* Semantic color mapping - Dark Orange palette */
   --color-bg-primary: var(--bg-dark-primary);
   --color-bg-secondary: var(--bg-dark-secondary);
   --color-bg-tertiary: var(--bg-dark-tertiary);
   --color-bg-elevated: var(--bg-dark-elevated);
-  --color-text-primary: var(--nord4);
-  --color-text-secondary: var(--nord5);
-  --color-text-muted: #8b8b8b;
-  --color-text-dark: #1a1a1a; /* Dark text for light/colored backgrounds */
+  --color-text-primary: var(--dorange-foreground);
+  --color-text-secondary: var(--dorange-foreground-dim);
+  --color-text-muted: var(--dorange-muted);
+  --color-text-dark: #1b1f23; /* Dark text for light/colored backgrounds */
 
-  /* Accent colors using golden/yellow tones (warm and inviting) */
-  --color-accent-primary: var(--gold-soft); /* Soft gold - readable and warm */
-  --color-accent-secondary: var(--gold-medium); /* Deeper gold */
-  --color-accent-hover: var(--gold-bright); /* Bright gold for emphasis */
+  /* Accent colors using the signature orange */
+  --color-accent-primary: var(--dorange-orange);
+  --color-accent-secondary: var(--dorange-orange-deep);
+  --color-accent-hover: var(--dorange-orange-bright);
 
-  /* Links using golden palette (distinctive and warm) */
-  --color-link: var(--gold-soft);
-  --color-link-hover: var(--gold-bright);
-  --color-link-active: var(--gold-medium);
+  /* Links using the signature orange */
+  --color-link: var(--dorange-orange);
+  --color-link-hover: var(--dorange-orange-bright);
+  --color-link-active: var(--dorange-orange-deep);
 
   /* UI elements */
-  --color-border: #555555;
-  --color-code-text: var(--nord11);
+  --color-border: var(--dorange-border);
+  --color-code-text: var(--dorange-red);
   --color-code-bg: var(--bg-dark-secondary);
-  --color-highlight: var(--gold-pale);
+  --color-highlight: var(--dorange-yellow);
 
-  /* Secondary accents for variety using Nord colors */
-  --color-accent-warm: var(--nord12); /* Soft orange when needed */
-  --color-accent-success: var(--nord14); /* Green */
-  --color-accent-warning: var(--nord13); /* Yellow */
-  --color-accent-danger: var(--nord11); /* Red */
+  /* Secondary accents for variety using Dark Orange syntax colors */
+  --color-accent-warm: var(--dorange-orange-bright);
+  --color-accent-success: var(--dorange-green);
+  --color-accent-warning: var(--dorange-yellow);
+  --color-accent-danger: var(--dorange-red);
 
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -93,11 +125,24 @@
   /* Font families */
   --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-poppins: 'Poppins', sans-serif;
+  --font-reading: 'Atkinson Hyperlegible', var(--font-system);
+
+  /* Reading comfort */
+  --reading-line-height: 1.75;
+  --reading-letter-spacing: 0.02em;
+  --reading-word-spacing: 0.06em;
+  --paragraph-spacing: 1.5rem;
 }
 
 /* ==========================================================================
    Base Styles
    ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 body {
   max-width: 85rem;
@@ -106,10 +151,12 @@ body {
   padding: var(--spacing-md);
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
-  font-family: var(--font-system);
-  font-size: 1rem;
+  font-family: var(--font-reading);
+  font-size: 1.125rem;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: var(--reading-line-height);
+  letter-spacing: var(--reading-letter-spacing);
+  word-spacing: var(--reading-word-spacing);
 }
 
 .content {
@@ -130,53 +177,60 @@ h5,
 h6 {
   margin: 0 0 var(--spacing-sm);
   font-weight: 600;
+  line-height: 1.3;
 }
 
-/* Each heading level has a unique color (Obsidian Nord scheme) */
+/* Each heading level has a unique color (Dark Orange scheme) */
 h1 {
   font-size: 2.25rem;
-  color: var(--nord11); /* Red */
+  color: var(--dorange-red);
 }
 
 h2 {
   font-size: 2rem;
-  color: var(--nord13); /* Yellow */
+  color: var(--dorange-blue);
 }
 
 h3 {
   font-size: 1.75rem;
-  color: var(--nord14); /* Green */
+  color: var(--dorange-green);
 }
 
 h4 {
   font-size: 1.5rem;
-  color: var(--nord15); /* Purple */
+  color: var(--dorange-purple);
 }
 
 h5 {
   font-size: 1.25rem;
-  color: var(--nord7); /* Frost cyan */
+  color: var(--dorange-cyan);
 }
 
 h6 {
   font-size: 1.125rem;
-  color: var(--nord9); /* Frost blue */
+  color: var(--dorange-yellow);
 }
 
 p {
-  margin: 0 0 var(--spacing-md);
+  margin: 0 0 var(--paragraph-spacing);
+  max-width: 72ch;
 }
 
 strong,
 b {
-  color: var(--nord13);
+  color: var(--dorange-yellow);
   font-weight: 600;
 }
 
 blockquote {
-  padding: 0 var(--spacing-md);
-  border-left: 5px solid var(--gold-soft);
-  background-color: rgba(230, 197, 71, 0.08);
+  margin: 0 0 var(--paragraph-spacing);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-left: 5px solid var(--dorange-orange);
+  background-color: rgba(255, 115, 0, 0.08);
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
 }
 
 hr {
@@ -297,7 +351,7 @@ footer {
   font-size: 2.5rem;
   margin-bottom: var(--spacing-md);
   line-height: 1.2;
-  color: var(--nord11);
+  color: var(--dorange-red);
 }
 
 .post-description {
@@ -344,7 +398,36 @@ footer {
 
 .post-content {
   margin: var(--spacing-2xl) 0;
-  line-height: 1.8;
+  font-size: 1.2rem;
+  line-height: 1.85;
+}
+
+.post-content li {
+  margin-bottom: var(--spacing-sm);
+  line-height: var(--reading-line-height);
+}
+
+.post-content ul,
+.post-content ol {
+  margin: 0 0 var(--paragraph-spacing);
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  margin-top: var(--spacing-xl);
+}
+
+.post-content h1:first-child,
+.post-content h2:first-child,
+.post-content h3:first-child,
+.post-content h4:first-child,
+.post-content h5:first-child,
+.post-content h6:first-child {
+  margin-top: 0;
 }
 
 /* Post Navigation */
@@ -363,7 +446,7 @@ footer {
   flex-direction: column;
   gap: var(--spacing-xs);
   padding: var(--spacing-md);
-  background-color: rgba(42, 42, 42, 0.2);
+  background-color: rgba(31, 36, 40, 0.2);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   transition: all var(--transition-normal);
@@ -371,7 +454,7 @@ footer {
 
 .post-nav-item:hover {
   border-color: var(--color-accent-primary);
-  background-color: rgba(42, 42, 42, 0.4);
+  background-color: rgba(31, 36, 40, 0.4);
   transform: translateY(-2px);
 }
 
@@ -461,11 +544,11 @@ footer {
   color: var(--color-accent-primary);
 }
 
-/* H2 bullets - Yellow (matching H2 color) */
+/* H2 bullets - Blue (matching H2 color) */
 .toc #TableOfContents > ul > li::marker,
 .toc > nav > ul > li::marker,
 .toc nav ul > li::marker {
-  color: var(--nord13) !important; /* Yellow - matching H2 */
+  color: var(--dorange-blue) !important; /* Blue - matching H2 */
 }
 
 /* H3 bullets - Green */
@@ -476,7 +559,7 @@ footer {
 }
 
 .toc ul ul > li::marker {
-  color: var(--nord14) !important; /* Green - matching H3 */
+  color: var(--dorange-green) !important; /* Green - matching H3 */
 }
 
 /* H4 bullets - Purple */
@@ -485,25 +568,25 @@ footer {
 }
 
 .toc ul ul ul > li::marker {
-  color: var(--nord15) !important; /* Purple - matching H4 */
+  color: var(--dorange-purple) !important; /* Purple - matching H4 */
 }
 
-/* H5 bullets - Frost cyan */
+/* H5 bullets - Cyan */
 .toc ul ul ul ul {
   list-style: disc;
 }
 
 .toc ul ul ul ul > li::marker {
-  color: var(--nord7) !important; /* Frost cyan - matching H5 */
+  color: var(--dorange-cyan) !important; /* Cyan - matching H5 */
 }
 
-/* H6 bullets - Frost blue */
+/* H6 bullets - Yellow */
 .toc ul ul ul ul ul {
   list-style: disc;
 }
 
 .toc ul ul ul ul ul > li::marker {
-  color: var(--nord9) !important; /* Frost blue - matching H6 */
+  color: var(--dorange-yellow) !important; /* Yellow - matching H6 */
 }
 
 /* ==========================================================================
@@ -522,6 +605,7 @@ footer {
 .post_img {
   width: 100%;
   height: 400px;
+  object-fit: cover;
 }
 
 .post_image img {
@@ -570,6 +654,14 @@ code {
   word-wrap: break-word;
 }
 
+pre,
+code,
+kbd {
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
 .highlight {
   width: 90%;
   margin: auto;
@@ -602,8 +694,8 @@ kbd {
   display: inline-block;
   padding: 2px 4px;
   color: var(--color-text-dark);
-  background-color: var(--nord6);
-  border: 1px solid var(--nord3);
+  background-color: var(--dorange-foreground);
+  border: 1px solid var(--dorange-border);
   border-radius: 3px;
   line-height: 1;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 2px 0 0 rgba(255, 255, 255, 0.1) inset;
@@ -635,6 +727,7 @@ details[open] summary {
 /* Book Columns */
 .book-columns {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .book-columns > div {
@@ -659,18 +752,18 @@ details[open] summary {
 }
 
 .info {
-  border-color: var(--nord15);
-  background-color: rgba(180, 142, 173, 0.15);
+  border-color: var(--dorange-purple);
+  background-color: rgba(199, 146, 234, 0.15);
 }
 
 .warning {
   border-color: var(--color-accent-warning);
-  background-color: rgba(235, 203, 139, 0.15);
+  background-color: rgba(255, 203, 107, 0.15);
 }
 
 .danger {
-  border-color: var(--nord11);
-  background-color: rgba(191, 97, 106, 0.15);
+  border-color: var(--dorange-red);
+  background-color: rgba(255, 83, 112, 0.15);
 }
 
 /* Task List */
@@ -824,7 +917,7 @@ details[open] summary {
 }
 
 .legend-dot-post {
-  background-color: var(--nord8);
+  background-color: var(--dorange-blue);
 }
 
 .graph-reset-btn {
@@ -974,7 +1067,7 @@ details[open] summary {
 .page-title {
   font-size: 2.5rem;
   margin-bottom: var(--spacing-sm);
-  color: var(--nord11);
+  color: var(--dorange-red);
 }
 
 .page-description {
@@ -996,13 +1089,13 @@ details[open] summary {
   align-items: baseline;
   gap: var(--spacing-sm);
   padding: var(--spacing-sm) 0;
-  border-bottom: 1px solid rgba(85, 85, 85, 0.3);
+  border-bottom: 1px solid rgba(68, 77, 86, 0.3);
   transition: all var(--transition-fast);
 }
 
 .simple-item:hover {
   padding-left: var(--spacing-sm);
-  background-color: rgba(42, 42, 42, 0.2);
+  background-color: rgba(31, 36, 40, 0.2);
 }
 
 /* ==========================================================================
@@ -1122,20 +1215,6 @@ details[open] summary {
   text-align: center;
 }
 
-/* Name Section */
-.name {
-  margin-bottom: var(--spacing-md);
-}
-
-.name h2 {
-  font-size: 1.3rem;
-}
-
-.name h4 {
-  font-size: 0.8rem;
-  color: var(--nord3);
-}
-
 /* Stats - Terminal Style */
 .stats {
   display: flex;
@@ -1147,20 +1226,6 @@ details[open] summary {
   align-items: baseline;
   flex-wrap: wrap;
   font-family: 'Courier New', Courier, monospace;
-}
-
-.stat-label {
-  display: flex;
-  align-items: baseline;
-}
-
-.stat-label h3 {
-  font-size: 0.85rem;
-  margin: 0;
-  color: var(--color-text-muted);
-  text-transform: lowercase;
-  font-weight: 400;
-  letter-spacing: 0;
 }
 
 .stat-card {
@@ -1223,7 +1288,7 @@ details[open] summary {
   margin-bottom: var(--spacing-md);
   padding-bottom: var(--spacing-xs);
   border-bottom: 2px solid var(--color-border);
-  color: var(--nord13);
+  color: var(--dorange-yellow);
 }
 
 .recent-list {
@@ -1237,13 +1302,13 @@ details[open] summary {
   align-items: baseline;
   gap: var(--spacing-sm);
   padding: var(--spacing-sm) 0;
-  border-bottom: 1px solid rgba(85, 85, 85, 0.3);
+  border-bottom: 1px solid rgba(68, 77, 86, 0.3);
   transition: all var(--transition-fast);
 }
 
 .recent-item:hover {
   padding-left: var(--spacing-sm);
-  background-color: rgba(42, 42, 42, 0.2);
+  background-color: rgba(31, 36, 40, 0.2);
 }
 
 .item-date {
@@ -1377,5 +1442,31 @@ details[open] summary {
 
   .site-nav a {
     padding: var(--spacing-sm) 0 var(--spacing-sm) 0;
+  }
+
+  .post-navigation {
+    flex-direction: column;
+  }
+
+  .post-nav-item.next {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+/* ==========================================================================
+   Reduced Motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .timeline ul li {
+    opacity: 1;
+    transform: none;
   }
 }
