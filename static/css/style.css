@@ -56,6 +56,11 @@
   --bg-dark-tertiary: #2f363d;
   --bg-dark-elevated: #444d56;
 
+  /* RGB channel companions, for rgba() overlays that need to stay in sync
+     with the palette above (kept as one source of truth across theme swaps) */
+  --color-bg-secondary-rgb: 31, 36, 40;
+  --color-border-rgb: 68, 77, 86;
+
   /* Dark Orange core colors */
   --dorange-foreground: #e1e4e8;
   --dorange-foreground-dim: #d1d5da;
@@ -124,8 +129,8 @@
 
   /* Font families */
   --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-poppins: 'Poppins', sans-serif;
   --font-reading: 'Atkinson Hyperlegible', var(--font-system);
+  --font-mono: 'Courier New', Courier, monospace;
 
   /* Reading comfort */
   --reading-line-height: 1.75;
@@ -258,6 +263,16 @@ a:active {
   color: var(--color-accent-hover);
 }
 
+/* Visible keyboard focus, branded with the theme's signature orange */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
 /* ==========================================================================
    Other Base Elements
    ========================================================================== */
@@ -326,19 +341,26 @@ footer {
 
 /* Single Post Page */
 .post {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: var(--spacing-md) var(--spacing-lg);
+  --post-padding-y: var(--spacing-lg);
+  --post-padding-x: var(--spacing-xl);
+  max-width: 920px;
+  margin: var(--spacing-lg) auto;
+  padding: var(--post-padding-y) var(--post-padding-x);
+  background-color: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
 }
 
 .post-cover {
-  margin-bottom: var(--spacing-2xl);
+  /* Bleed the cover image to the card edges, clipped by .post's own radius/overflow */
+  margin: calc(var(--post-padding-y) * -1) calc(var(--post-padding-x) * -1) var(--spacing-2xl);
 }
 
 .post-cover img {
   width: 100%;
   height: auto;
-  border-radius: var(--radius-md);
+  display: block;
 }
 
 .post-header {
@@ -366,7 +388,7 @@ footer {
   flex-wrap: wrap;
   align-items: center;
   gap: var(--spacing-sm);
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
   font-size: 0.9rem;
   color: var(--color-text-muted);
 }
@@ -446,7 +468,7 @@ footer {
   flex-direction: column;
   gap: var(--spacing-xs);
   padding: var(--spacing-md);
-  background-color: rgba(31, 36, 40, 0.2);
+  background-color: rgba(var(--color-bg-secondary-rgb), 0.2);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   transition: all var(--transition-normal);
@@ -454,7 +476,7 @@ footer {
 
 .post-nav-item:hover {
   border-color: var(--color-accent-primary);
-  background-color: rgba(31, 36, 40, 0.4);
+  background-color: rgba(var(--color-bg-secondary-rgb), 0.4);
   transform: translateY(-2px);
 }
 
@@ -468,7 +490,7 @@ footer {
 }
 
 .nav-label {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
   font-size: 0.85rem;
   color: var(--color-text-muted);
   text-transform: lowercase;
@@ -657,7 +679,7 @@ code {
 pre,
 code,
 kbd {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
   letter-spacing: normal;
   word-spacing: normal;
 }
@@ -797,7 +819,7 @@ details[open] summary {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   text-decoration: none;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
   font-size: 0.9rem;
   transition: all var(--transition-fast);
 }
@@ -861,7 +883,7 @@ details[open] summary {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   color: var(--color-text-muted);
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
   font-size: 0.9rem;
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -988,7 +1010,8 @@ details[open] summary {
   transition: all var(--transition-fast);
 }
 
-.page-link:hover {
+.page-link:hover,
+.social-media a:hover {
   background-color: var(--color-accent-primary);
   color: var(--color-text-dark);
   border-color: var(--color-accent-primary);
@@ -1021,13 +1044,14 @@ details[open] summary {
 
 .social-media {
   display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 25px;
-  padding: 0 25%;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  max-width: 20rem;
+  margin: 0 auto 25px;
 }
 
 .social-media a {
-  margin: 3px;
   padding: var(--spacing-xs);
   color: var(--color-accent-primary);
   background-color: var(--color-bg-secondary);
@@ -1035,12 +1059,6 @@ details[open] summary {
   border-radius: var(--radius-md);
   text-decoration: none;
   transition: all var(--transition-fast);
-}
-
-.social-media a:hover {
-  background-color: var(--color-accent-primary);
-  color: var(--color-text-dark);
-  border-color: var(--color-accent-primary);
 }
 
 /* ==========================================================================
@@ -1073,7 +1091,7 @@ details[open] summary {
 .page-description {
   font-size: 1.1rem;
   color: var(--color-text-muted);
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
   margin: 0;
 }
 
@@ -1084,18 +1102,21 @@ details[open] summary {
   margin: 0;
 }
 
-.simple-item {
+/* Shared row style for .simple-item (projects/posts lists) and .recent-item (homepage) */
+.simple-item,
+.recent-item {
   display: flex;
   align-items: baseline;
   gap: var(--spacing-sm);
   padding: var(--spacing-sm) 0;
-  border-bottom: 1px solid rgba(68, 77, 86, 0.3);
+  border-bottom: 1px solid rgba(var(--color-border-rgb), 0.3);
   transition: all var(--transition-fast);
 }
 
-.simple-item:hover {
+.simple-item:hover,
+.recent-item:hover {
   padding-left: var(--spacing-sm);
-  background-color: rgba(31, 36, 40, 0.2);
+  background-color: rgba(var(--color-bg-secondary-rgb), 0.2);
 }
 
 /* ==========================================================================
@@ -1225,7 +1246,7 @@ details[open] summary {
   justify-content: center;
   align-items: baseline;
   flex-wrap: wrap;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
 }
 
 .stat-card {
@@ -1251,7 +1272,7 @@ details[open] summary {
   margin: 0;
   color: var(--color-accent-primary);
   line-height: 1;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
 }
 
 .stat-date {
@@ -1260,7 +1281,7 @@ details[open] summary {
   margin: 0;
   color: var(--color-accent-primary);
   line-height: 1;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
 }
 
 /* Recent Sections */
@@ -1297,22 +1318,8 @@ details[open] summary {
   margin: 0;
 }
 
-.recent-item {
-  display: flex;
-  align-items: baseline;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-sm) 0;
-  border-bottom: 1px solid rgba(68, 77, 86, 0.3);
-  transition: all var(--transition-fast);
-}
-
-.recent-item:hover {
-  padding-left: var(--spacing-sm);
-  background-color: rgba(31, 36, 40, 0.2);
-}
-
 .item-date {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
   font-size: 0.85rem;
   color: var(--color-text-muted);
   min-width: 150px;
@@ -1342,7 +1349,7 @@ details[open] summary {
   background-color: var(--color-bg-secondary);
   border: 1px solid var(--color-accent-primary);
   border-radius: var(--radius-md);
-  font-family: var(--font-poppins);
+  font-family: var(--font-reading);
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
@@ -1451,6 +1458,24 @@ details[open] summary {
   .post-nav-item.next {
     align-items: flex-start;
     text-align: left;
+  }
+
+  .post {
+    --post-padding-y: var(--spacing-md);
+    --post-padding-x: var(--spacing-sm);
+    margin: 0 auto;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .post-title {
+    font-size: 1.875rem;
+  }
+
+  .post-header {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
   }
 }
 
