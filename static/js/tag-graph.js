@@ -10,6 +10,20 @@
   var ALPHA_DECAY = 0.02;
   var MIN_ALPHA = 0.001;
   var CLICK_MOVE_THRESHOLD = 5;
+  var MAX_LABEL_LENGTH = 22;
+
+  /* Tunable via the "Parameters" panel; keys match each input's data-param */
+  var paramSetters = {
+    repulsion: function (v) { REPULSION = v; },
+    linkDistance: function (v) { LINK_DISTANCE = v; },
+    linkStrength: function (v) { LINK_STRENGTH = v; },
+    centerStrength: function (v) { CENTER_STRENGTH = v; }
+  };
+
+  function truncateLabel(label) {
+    if (!label || label.length <= MAX_LABEL_LENGTH) return label;
+    return label.slice(0, MAX_LABEL_LENGTH - 1).trimEnd() + '…';
+  }
 
   function initToggle() {
     var buttons = document.querySelectorAll('.view-toggle-btn');
@@ -50,12 +64,16 @@
 
     var ctx = canvas.getContext('2d');
     var style = getComputedStyle(document.documentElement);
-    var colorTag = style.getPropertyValue('--color-accent-primary').trim() || '#e6c547';
-    var colorPost = style.getPropertyValue('--nord8').trim() || '#88c0d0';
+    var colorTag = style.getPropertyValue('--color-graph-node-tag').trim() || '#ff7300';
+    var colorPost = style.getPropertyValue('--color-graph-node-post').trim() || '#82aaff';
     var colorEdge = style.getPropertyValue('--color-border').trim() || '#555555';
     var colorLabel = style.getPropertyValue('--color-text-primary').trim() || '#d8dee9';
     var colorLabelMuted = style.getPropertyValue('--color-text-muted').trim() || '#8b8b8b';
     var colorStroke = style.getPropertyValue('--color-bg-secondary').trim() || '#2a2a2a';
+    var colorMatch = style.getPropertyValue('--color-accent-hover').trim() || '#ffa600';
+    /* Canvas's `font` property can't resolve CSS custom properties, so grab
+       the theme's actual resolved font stack once instead of hardcoding one. */
+    var labelFont = getComputedStyle(document.body).fontFamily || 'sans-serif';
 
     var byId = {};
     var nodes = raw.nodes.map(function (n) {
@@ -104,6 +122,7 @@
     var panOrigin = { x: 0, y: 0 };
     var pointerDownPos = { x: 0, y: 0 };
     var pointerMoved = false;
+    var searchQuery = '';
 
     function resize() {
       var rect = canvas.parentElement.getBoundingClientRect();
@@ -197,8 +216,16 @@
     function draw() {
       ctx.clearRect(0, 0, width, height);
 
+      var matches = null;
+      if (searchQuery) {
+        matches = {};
+        nodes.forEach(function (n) {
+          if (n.label && n.label.toLowerCase().indexOf(searchQuery) !== -1) matches[n.id] = true;
+        });
+      }
+
       var neighbors = null;
-      if (hoverNode) {
+      if (!matches && hoverNode) {
         neighbors = {};
         neighbors[hoverNode.id] = true;
         links.forEach(function (l) {
@@ -207,11 +234,14 @@
         });
       }
 
+      var dimmed = matches || neighbors;
+
       ctx.lineWidth = 1;
       links.forEach(function (l) {
         var a = worldToScreen(l.source.x, l.source.y);
         var b = worldToScreen(l.target.x, l.target.y);
-        var faded = neighbors && !(neighbors[l.source.id] && neighbors[l.target.id]);
+        var faded = matches ? !(matches[l.source.id] && matches[l.target.id])
+          : neighbors && !(neighbors[l.source.id] && neighbors[l.target.id]);
         ctx.globalAlpha = faded ? 0.08 : 0.5;
         ctx.strokeStyle = colorEdge;
         ctx.beginPath();
@@ -224,24 +254,25 @@
       nodes.forEach(function (n) {
         var p = worldToScreen(n.x, n.y);
         var r = n.radius * transform.k;
-        var faded = neighbors && !neighbors[n.id];
+        var isMatch = matches && matches[n.id];
+        var faded = dimmed && !(matches ? isMatch : neighbors[n.id]);
 
         ctx.globalAlpha = faded ? 0.2 : 1;
         ctx.beginPath();
         ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
         ctx.fillStyle = n.type === 'tag' ? colorTag : colorPost;
         ctx.fill();
-        ctx.lineWidth = 1.5;
-        ctx.strokeStyle = colorStroke;
+        ctx.lineWidth = isMatch ? 2.5 : 1.5;
+        ctx.strokeStyle = isMatch ? colorMatch : colorStroke;
         ctx.stroke();
 
-        var showLabel = n.type === 'tag' ? transform.k > 0.35 : (hoverNode && neighbors[n.id]);
+        var showLabel = isMatch || (n.type === 'tag' ? transform.k > 0.35 : (hoverNode && neighbors && neighbors[n.id]));
         if (showLabel && !faded) {
           ctx.globalAlpha = 1;
-          ctx.font = (n === hoverNode ? 'bold ' : '') + '11px var(--font-system), sans-serif';
-          ctx.fillStyle = n === hoverNode || n.type === 'tag' ? colorLabel : colorLabelMuted;
+          ctx.font = (n === hoverNode || isMatch ? 'bold ' : '') + '11px ' + labelFont;
+          ctx.fillStyle = isMatch ? colorMatch : (n === hoverNode || n.type === 'tag' ? colorLabel : colorLabelMuted);
           ctx.textAlign = 'center';
-          ctx.fillText(n.label, p.x, p.y - r - 5);
+          ctx.fillText(truncateLabel(n.label), p.x, p.y - r - 5);
         }
       });
       ctx.globalAlpha = 1;
@@ -430,6 +461,25 @@
         wake();
       });
     }
+
+    var searchInput = document.getElementById('tag-graph-search');
+    if (searchInput) {
+      searchInput.addEventListener('input', function () {
+        searchQuery = searchInput.value.trim().toLowerCase();
+        wake();
+      });
+    }
+
+    document.querySelectorAll('[data-param]').forEach(function (input) {
+      var key = input.getAttribute('data-param');
+      var output = document.querySelector('[data-param-output="' + key + '"]');
+      input.addEventListener('input', function () {
+        var value = parseFloat(input.value);
+        if (paramSetters[key]) paramSetters[key](value);
+        if (output) output.textContent = value;
+        reheat();
+      });
+    });
 
     if (window.ResizeObserver) {
       new ResizeObserver(resize).observe(canvas.parentElement);

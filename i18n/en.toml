@@ -42,3 +42,24 @@ other = "Graph"
 
 [reset_view]
 other = "Reset view"
+
+[graph_empty]
+other = "No tagged posts yet — tag a post to see it appear here."
+
+[graph_search_placeholder]
+other = "Search nodes…"
+
+[graph_params]
+other = "Parameters"
+
+[graph_param_repulsion]
+other = "Repulsion"
+
+[graph_param_link_distance]
+other = "Link distance"
+
+[graph_param_link_strength]
+other = "Link strength"
+
+[graph_param_center]
+other = "Center pull"

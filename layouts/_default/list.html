@@ -22,15 +22,6 @@
       {{end}}
   </div>
 
-  <div class="tag-graph-panel" data-view-panel="graph" hidden>
-    <div class="tag-graph-controls">
-      <span class="tag-graph-legend"><span class="legend-dot legend-dot-tag"></span>{{ i18n "tags" }}</span>
-      <span class="tag-graph-legend"><span class="legend-dot legend-dot-post"></span>{{ i18n "posts" }}</span>
-      <button type="button" class="graph-reset-btn" id="tag-graph-reset">{{ i18n "reset_view" }}</button>
-    </div>
-    <canvas id="tag-graph-canvas"></canvas>
-  </div>
-
   {{ $nodes := slice }}
   {{ $links := slice }}
   {{ range site.Taxonomies.tags.Alphabetical }}
@@ -45,8 +36,46 @@
       {{ end }}
     {{ end }}
   {{ end }}
+
+  <div class="tag-graph-panel" data-view-panel="graph" hidden>
+    {{ if $nodes }}
+    <div class="tag-graph-controls">
+      <span class="tag-graph-legend"><span class="legend-dot legend-dot-tag"></span>{{ i18n "tags" }}</span>
+      <span class="tag-graph-legend"><span class="legend-dot legend-dot-post"></span>{{ i18n "posts" }}</span>
+      <input type="search" id="tag-graph-search" class="graph-search-input" placeholder="{{ i18n "graph_search_placeholder" }}" aria-label="{{ i18n "graph_search_placeholder" }}">
+      <button type="button" class="graph-reset-btn" id="tag-graph-reset">{{ i18n "reset_view" }}</button>
+    </div>
+    <details class="graph-params">
+      <summary>{{ i18n "graph_params" }}</summary>
+      <div class="graph-params-grid">
+        <label class="graph-param">
+          <span class="graph-param-label">{{ i18n "graph_param_repulsion" }} <output data-param-output="repulsion">1800</output></span>
+          <input type="range" data-param="repulsion" min="200" max="4000" step="50" value="1800">
+        </label>
+        <label class="graph-param">
+          <span class="graph-param-label">{{ i18n "graph_param_link_distance" }} <output data-param-output="linkDistance">70</output></span>
+          <input type="range" data-param="linkDistance" min="20" max="200" step="5" value="70">
+        </label>
+        <label class="graph-param">
+          <span class="graph-param-label">{{ i18n "graph_param_link_strength" }} <output data-param-output="linkStrength">0.05</output></span>
+          <input type="range" data-param="linkStrength" min="0.01" max="0.3" step="0.01" value="0.05">
+        </label>
+        <label class="graph-param">
+          <span class="graph-param-label">{{ i18n "graph_param_center" }} <output data-param-output="centerStrength">0.01</output></span>
+          <input type="range" data-param="centerStrength" min="0" max="0.1" step="0.005" value="0.01">
+        </label>
+      </div>
+    </details>
+    <canvas id="tag-graph-canvas"></canvas>
+    {{ else }}
+    <p class="graph-empty-state">{{ i18n "graph_empty" }}</p>
+    {{ end }}
+  </div>
+
+  {{ if $nodes }}
   <script type="application/json" id="tag-graph-data">{{ (dict "nodes" $nodes "links" $links) | jsonify | safeJS }}</script>
   <script src="{{ relURL "js/tag-graph.js" }}" defer></script>
+  {{ end }}
 
   {{ else }}
   <!-- Posts/Projects list -->
