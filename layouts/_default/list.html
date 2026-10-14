@@ -77,6 +77,18 @@
   <script src="{{ relURL "js/tag-graph.js" }}" defer></script>
   {{ end }}
 
+  {{ else if and .IsSection .Sections }}
+  <!-- Section index: every post by date -->
+  <ul class="simple-list">
+    {{ range (.Paginate .RegularPagesRecursive.ByDate.Reverse).Pages }}
+    <li class="simple-item">
+      <span class="item-date">{{ .Date | time.Format (.Site.Params.dateFormat | default "02 January 2006") }}</span>
+      <span class="separator">—</span>
+      <a class="item-title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+
   {{ else }}
   <!-- Posts/Projects list -->
   <ul class="simple-list">
