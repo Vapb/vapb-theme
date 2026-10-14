@@ -34,35 +34,15 @@ other = "Data"
 [language_switcher]
 other = "Idioma"
 
-[grid_view]
-other = "Grade"
 
-[graph_view]
-other = "Grafo"
 
-[reset_view]
-other = "Redefinir visão"
 
-[graph_empty]
-other = "Nenhum post com tags ainda — marque um post com uma tag pra ele aparecer aqui."
 
-[graph_search_placeholder]
-other = "Buscar nós…"
 
-[graph_params]
-other = "Parâmetros"
 
-[graph_param_repulsion]
-other = "Repulsão"
 
-[graph_param_link_distance]
-other = "Distância dos links"
 
-[graph_param_link_strength]
-other = "Força dos links"
 
-[graph_param_center]
-other = "Força centrípeta"
 
 [not_found_title]
 other = "Página Não Encontrada"
