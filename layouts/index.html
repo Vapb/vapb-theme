@@ -15,7 +15,7 @@
           <h3>{{ i18n "projects" }}</h3>
         </li>
         <li class="stat-card">
-          <p class="stat-number" data-target="{{ add (len (where .Site.Pages "Section" "posts")) -1 }}">0</p>
+          <p class="stat-number" data-target="{{ len (where .Site.RegularPages "Section" "posts") }}">0</p>
           <h3>{{ i18n "posts" }}</h3>
         </li>
         <li class="stat-card">
@@ -46,7 +46,7 @@
         <div class="section-block">
             <h2 class="section-title">{{ i18n "recent" }} {{ .Title }}</h2>
             <ul class="recent-list">
-                {{ range first 10 .Pages.ByDate.Reverse }}
+                {{ range first 10 .RegularPagesRecursive.ByDate.Reverse }}
                 <li class="recent-item">
                     <span class="item-date">{{ .Date | time.Format (.Site.Params.dateFormat | default "02 January 2006" ) }}</span>
                     <span class="separator">—</span>
