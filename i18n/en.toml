@@ -63,3 +63,9 @@ other = "Link strength"
 
 [graph_param_center]
 other = "Center pull"
+
+[not_found_title]
+other = "Page Not Found"
+
+[not_found_back]
+other = "Go back to the home page"

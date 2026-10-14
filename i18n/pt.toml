@@ -63,3 +63,9 @@ other = "Força dos links"
 
 [graph_param_center]
 other = "Força centrípeta"
+
+[not_found_title]
+other = "Página Não Encontrada"
+
+[not_found_back]
+other = "Voltar para a página inicial"

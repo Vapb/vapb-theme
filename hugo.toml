@@ -2,7 +2,7 @@ baseURL = 'http://example.org/'
 defaultContentLanguage = 'pt'
 defaultContentLanguageInSubdir = true
 enableEmoji = true
-paginate = 25
+paginate = 20
 
 [languages]
   [languages.en]
