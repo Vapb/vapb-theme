@@ -7,7 +7,7 @@
   </div>
 
   {{  if strings.HasSuffix .Page.Permalink "/tags/" }}
-  <!-- Tags page -->
+  <!-- Tags page: every tag shown at once, so no pagination -->
   <div class="tags-grid">
       {{range site.Taxonomies.tags.Alphabetical}}
           <a href={{ .Page.RelPermalink }} class="tag-item" title="all pages with {{.Page.Title}}">
@@ -28,6 +28,7 @@
     </li>
     {{ end }}
   </ul>
+  {{ partial "pagination.html" . }}
 
   {{ else }}
   <!-- Posts/Projects list -->
@@ -40,9 +41,8 @@
     </li>
     {{ end }}
   </ul>
-  {{ end }}
-
   {{ partial "pagination.html" . }}
+  {{ end }}
 </section>
 
 {{ partial "footer.html" . }}

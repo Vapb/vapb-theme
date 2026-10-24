@@ -420,13 +420,23 @@ footer {
 }
 
 .post-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15em 0.6em;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   color: var(--color-accent-primary);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
   text-decoration: none;
-  transition: color var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
 }
 
 .post-tag:hover {
-  color: var(--color-accent-hover);
+  background-color: var(--color-accent-primary);
+  border-color: var(--color-accent-primary);
+  color: var(--color-text-dark);
 }
 
 .post-content {
