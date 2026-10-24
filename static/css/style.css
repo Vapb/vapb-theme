@@ -445,6 +445,15 @@ footer {
   line-height: 1.75;
 }
 
+/* Use the full width of the post column and justify the running text;
+   hyphenation (lang is set on <html>) keeps the word gaps even. */
+.post-content p,
+.post-content li {
+  max-width: none;
+  text-align: justify;
+  hyphens: auto;
+}
+
 .post-content li {
   margin-bottom: var(--spacing-sm);
   line-height: var(--reading-line-height);
