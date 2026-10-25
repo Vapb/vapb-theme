@@ -452,6 +452,8 @@ footer {
   max-width: none;
   text-align: justify;
   hyphens: auto;
+  /* avoid a last line with a single orphan word */
+  text-wrap: pretty;
 }
 
 .post-content li {
@@ -471,6 +473,7 @@ footer {
 .post-content h5,
 .post-content h6 {
   margin-top: var(--spacing-xl);
+  text-wrap: balance;
 }
 
 .post-content h1:first-child,
